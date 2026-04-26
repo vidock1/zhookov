@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Новое место {% endblock %}</h1>
+<br>
+<form method="post" class="px-4">
+    <div class="row mb-4">
+        <label for="region" class="col-sm-3 col-form-label">Город</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="region" value="{{ request.form['region'] }}" placeholder="Московская область">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="city" class="col-sm-3 col-form-label">Улица</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="city" value="{{ request.form['city'] }}" placeholder="Москва">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="street" class="col-sm-3 col-form-label">Дом</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="street" value="{{ request.form['street'] }}" placeholder="13">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="house-apart-floor" class="col-sm-3 col-form-label">Место</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="house" value="{{ request.form['house'] }}" placeholder="6">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="people-date" class="col-sm-3 col-form-label">Кол-во месяцев</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="people" value="{{ request.form['people'] }}" placeholder="7">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="date" value="{{ request.form['date'] }}" placeholder="01.01.2024">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="description" class="col-sm-3 col-form-label">Описание места</label>
+        <div class="col-sm-8">
+            <input type="textarea" class="form-control" name="description" value="{{ request.form['description'] }}" placeholder="Боковое">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="owner" class="col-sm-3 col-form-label">Клиент</label>
+        <div class="col-sm-8">
+            <select class="form-select" name="owner">
+                <option value='0'>Клиент...</option>
+                {% for c in clients %}
+                    <option value={{c.id_client}}>{{c.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="bi-house"></i> Новое место</button>
+</form>
+
+{% endblock %}

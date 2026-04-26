@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Парковочные места {% endblock %}</h1>
+
+<div class="container mt-5 mb-3">
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-4">
+            <div class="card p-3 mb-2 border-primary">
+                <div class="card-header">
+                    <a href="{{ url_for('event', event_id=event['id_event']) }}">>
+                        <b>Место # {{ event['number'] }} от {{ event['date'] }}</b>
+                    </a>
+                    <br>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ event['address'] }} <span class="badge bg-primary">{{
+                            event['price'] }} ₽</span></h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
